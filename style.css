@@ -1,0 +1,235 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: white;
+    font-family: 'Plain Light';
+}
+
+html, body{
+    width: 100%;
+    height: 100%;
+}
+
+#crsr{
+    height: 2.3vw;
+    width: 2.3vw;
+    border-radius: 50%;
+    /* background-color: white; */
+    border: 1px solid #b9b5b5;
+    position: fixed;
+    z-index: 999;
+    mix-blend-mode: difference;
+    transform: translate(-50%, -50%);
+}
+
+#loader{
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    z-index: 100;
+    background-color: #030303;
+    padding: 25vh 10vw;
+}
+
+.info{
+    /* background-color: aqua; */
+    height: fit-content;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 2vw;
+}
+
+#line1-part1{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1vw;
+}
+
+#line1-part1 h5, #line1-part1 h6{
+    font-size: 3vw;
+    font-family: 'silk serif';
+    font-weight: 100;
+}
+
+#line1-part1 h5{
+    width: 6.5vw;
+    text-align: right;
+}
+
+.info h1{
+    font-size: 6vw;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.info h2{
+    font-size: 4.5vw;
+    text-transform: uppercase;
+    font-weight: 800;
+    opacity: 0;
+    animation-duration: 1.5s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes anime {
+    0%{
+        font-family: 'plain light';
+        -webkit-text-stroke: 0.1px #fff;
+        color: #fff;
+        font-weight: 500;
+        opacity: 1;
+    }
+    47%{
+        font-family: 'plain light';
+        -webkit-text-stroke: 0.1px #fff;
+        color: #fff;
+        font-weight: 500;
+        opacity: 0;
+    }
+    50%{
+        font-family: 'silk serif';
+        -webkit-text-stroke: 1px #fff;
+        font-weight: 500;
+        color: transparent;
+        opacity: 1;
+    }
+    100%{
+        font-family: 'silk serif';
+        -webkit-text-stroke: 1px #fff;
+        font-weight: 500;
+        color: transparent;
+        opacity: 0;
+    }
+}
+
+#main{
+    height: 100%;
+    width: 100%;
+    position: relative;
+    background-color: #030303;
+}
+
+#page1{
+    width: 100%;
+    height: 100%;
+    background-color: #151515;
+}
+
+#page1 #nav{
+    /* background-color: aqua; */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2vw 5vw;
+}
+
+#nav-center h4{
+    font-size: 1vw;
+    font-weight: 500;
+    line-height: 1.1vw;
+}
+
+#nav-right{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2vw;
+}
+
+#nav-right h4{
+    font-size: 1vw;
+    font-weight: 500;
+}
+
+.hero{
+    /* background-color: crimson; */
+    width: 73%;
+    margin-left: 27%;
+    height: fit-content;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    position: relative;
+    z-index: 99999;
+}
+
+.hero:nth-child(2){
+    margin-top: 15vh;
+}
+
+.hero h1{
+    font-size: 7vw;
+    text-transform: uppercase;
+    font-weight: 600;
+    line-height: 7vw;
+    /* letter-spacing: 0.2vw; */
+}
+
+.hero h2{
+    font-size: 7.2vw;
+    text-transform: uppercase;
+    font-weight: 600;
+    line-height: 7vw;
+    border-bottom: 0.6vw solid #fff;
+    /* background-color: bisque; */
+    /* padding-bottom: 0.8vw;
+    transition: all ease 0.3s; */
+}
+
+.hero h2:hover{
+    -webkit-text-stroke: 2px #fff;
+    color: transparent;
+    font-weight: 500;
+    border-bottom:0.6vw solid transparent;
+}
+
+#page2{
+    height: 100vh;
+    width: 100%;
+    background-color: #151515;
+    padding-top: 7vh;
+}
+
+#video-container{
+    height: 66vh;
+    width: 71vw;
+    left: 28%;
+    position: relative;
+    background-image: url(https://obys.agency/wp-content/uploads/2022/11/Showreel-2022-preview-1.jpg);
+}
+
+#video-cursor{
+    background-color: #FFA63D;
+    height: 10vw;
+    width: 10vw;
+    border-radius: 50%;
+    position: absolute;
+    top: -10%;
+    left: 70%;
+    z-index: 999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#video-cursor i{
+    font-size: vw;
+}
+
+#video-container img{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    top: 0;
+}
+
+#video-container video{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
