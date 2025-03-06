@@ -1,3 +1,40 @@
+function locomotiveAnimation(){
+    gsap.registerPlugin(ScrollTrigger);
+
+    const locoScroll = new LocomotiveScroll({
+        el: document.querySelector("#main"),
+        smooth: true,
+        smartphone: { smooth: true },
+        tablet: { smooth: true }
+    });
+
+    locoScroll.on("scroll", ScrollTrigger.update);
+
+    ScrollTrigger.scrollerProxy("#main", {
+        scrollTop(value) {
+            if (arguments.length) {
+                locoScroll.scrollTo(value, 0, 0);
+            }
+            return locoScroll.scroll.instance.scroll.y;
+        },
+        getBoundingClientRect() {
+            return {
+                top: 0, left: 0,
+                width: window.innerWidth,
+                height: window.innerHeight
+            };
+        },
+        pinType: document.querySelector("#main").style.transform ? "transform" : "fixed"
+    });
+
+    ScrollTrigger.addEventListener("refresh", () => locoScroll.update());
+
+    // Delay refresh to ensure everything loads correctly
+    setTimeout(() => {
+        ScrollTrigger.refresh();
+    }, 100);
+};
+
 function loadingAnimation(){
     let tl = gsap.timeline()
     tl.from(".info h1", {
@@ -22,7 +59,7 @@ function loadingAnimation(){
                     h5timer.innerHTML = 100
                 }
                 // console.log(grow)
-            }, 35)
+            }, 25)
         }
     });
 
@@ -55,7 +92,9 @@ function loadingAnimation(){
         y: 120,
         stagger: 0.2
     })
-
+    tl.from("#hero1, #page2 ", {
+        opacity:0,
+    }, "-=1.2")
 };
 
 function cursorAnimation(){
@@ -71,3 +110,4 @@ function cursorAnimation(){
 
 loadingAnimation();
 cursorAnimation();
+locomotiveAnimation();

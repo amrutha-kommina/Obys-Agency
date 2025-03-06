@@ -11,6 +11,10 @@ html, body{
     height: 100%;
 }
 
+#main{
+    height: 100vh;
+}
+
 body{
     overflow-x: hidden;
 }
@@ -164,7 +168,7 @@ body{
     width: 73%;
     margin-left: 27%;
     height: fit-content;
-    /* overflow: hidden; */
+    overflow: hidden;
     display: flex;
     align-items: center;
     position: relative;
@@ -242,7 +246,7 @@ body{
 }
 
 #video-cursor i{
-    font-size: vw;
+    font-size: 2.5vw;
 }
 
 #video-container img{
@@ -372,7 +376,7 @@ body{
 .elem {
     /* background-color: red; */
     white-space: nowrap;
-    overflow-x: hidden;
+    overflow: hidden;
 }
 
 .elem h1{
