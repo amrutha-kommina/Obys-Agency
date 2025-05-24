@@ -98,20 +98,52 @@ function loadingAnimation(){
 };
 
 function cursorAnimation(){
-    document.addEventListener("mousemove", function(dets){
-        gsap.to("#crsr", {
-            left: dets.x,
-            top: dets.y 
-        })
-    })
-    
-    Shery.makeMagnet("#nav-right h4");
+    Shery.mouseFollower({
+        skew:true,
+        ease: "cubic-beizer(0.23, 1, 0.320, 1)",
+        duration:1,
+    });
+    Shery.makeMagnet("nav-part2 h4");
+
+    let videoContainer = document.querySelector("#video-container");
+    let video = document.querySelector("#video-container video");
+    let videoCursor = document.querySelector("#video-cursor");
+    let flag = 0;
+
+    videoContainer.addEventListener("mousemove", function(dets){
+        gsap.to(".mousefollower", { opacity: 0 });
+        gsap.to("#video-cursor", {
+            left: dets.x - 550,
+            top: dets.y - 200
+        });
+    });
+
+    videoContainer.addEventListener('mouseleave', function(){
+        gsap.to('.mousefollower', 
+            { opacity: 1 }
+        );
+        gsap.to("#video-cursor", {
+            left: '70%',
+            top: '-15%'
+        });
+    });
+
+    videoContainer.addEventListener("click", function(){
+        if (flag === 0) {
+            video.play();
+            video.style.opacity = 1;
+            videoCursor.innerHTML = '<i class="ri-pause-line"></i>';
+            gsap.to("#video-cursor", { scale: 0.5 });
+            flag = 1;
+        } else {
+            video.pause();
+            video.style.opacity = 0;
+            videoCursor.innerHTML = '<i class="ri-play-fill"></i>';
+            gsap.to("#video-cursor", { scale: 1 });
+            flag = 0;
+        }
+    });
 };
-
-loadingAnimation();
-// cursorAnimation();
-locomotiveAnimation();
-
 
 function sheryAnimation(){
     Shery.imageEffect('.image-div', {
@@ -128,4 +160,25 @@ function sheryAnimation(){
     })
 }
 
+loadingAnimation();
+cursorAnimation();
+locomotiveAnimation();
 sheryAnimation()
+
+document.addEventListener('mousemove', function(dets){
+    gsap.to('#flag', {
+        x: dets.x,
+        y:dets.y
+    })
+})
+document.querySelector('#hero3').addEventListener("mouseenter", function(){
+    gsap.to("#flag", {
+        opacity: 1
+    })
+})
+document.querySelector('#hero3').addEventListener("mouseleave", function(){
+    gsap.to("#flag", {
+        opacity: 0
+    })
+})
+
